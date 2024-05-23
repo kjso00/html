@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5da81c12dd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header"> 
+    <div class = "container">
+        <h1 class="portfolio-title">JOOYEON's Portfolio</h1>
+    
+        <nav>
+            <ul>
+
+                <li><a href="">home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            
+        </nav>
+        </div>
+        <div class="header-text">
+            <p>Backend Engineer</p>
+            <h2>Hi, I'm <span>Jooyeon</span><br> Shin from Korea</h2>
+    
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <!-- 프로필 이미지 표시 -->
+                    <img src="images/profile.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Hi,</p>
+
+                    <div class="tab-title">
+                        <!-- skills 탭 링크 클릭시 opentab함수 호출 -->
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>   
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                        <li><span>Web Development</span><br>JAVA, HTML , MYSQL</li>
+                    </ul>
+                    </div>
+
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                        <li><span>2024 - Current</span><br>ddd</li>
+                    </ul>
+                    </div>
+
+                    <div class="tab-contents" id="education">
+                    <ul>
+                    <li><span>2024</span><br>Training at Himedia School</li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+    <!-- -----------services--------- -->
+    <script>
+         // 'tablinks'라는 변수에 'tab-links' 클래스를 가진 모든 요소들을 가져와서 배열 형태로 저장
+        var tablinks =document.getElementsByClassName("tab-links");
+        var tabcontents =document.getElementsByClassName("tab-contents");
+        //'opentab'라는 이름의 함수를 정의/'tabname'이라는 매개변수를 받음(특정탭 활성화, 다른 모든 탭 비활성화)
+        function opentab(tabname){
+            // 현재 순회 중인 'tablink' 요소에서 'active-link' 클래스를 제거
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+        }
+        // 클릭된 탭 링크 요소에 'active-link' 클래스를 추가하여 활성화
+        event.currentTarget.classList.add("active-link");
+        // 'tabname'을 ID로 가진 요소에 'active-tab' 클래스를 추가하여 해당 탭 콘텐츠를 활성화
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+    </script>
+   
+   
+    
+</body>
+</html>
