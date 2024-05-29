@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        h1 {
+            text-align: center;
+        }
+        
+        
+        </style>
+</head>
+<body>
+    <h1>vue v-model 이해하기</h1>
+    <div id="app">
+        <button @click="toggleMode">{{isCharacterMode ?  '조회하기' :'조회하기'}}</button>
+        <template v-if="isCharacterMode"></template>
+    
+        <br>
+        <select v-model="selected" @change="check" >
+            <option value="skill"> 스킬등록</option>
+            <option value="character">인물등록</option>
+                 
+        </select>
+            <br>
+             
+            <label>skill  : </label>
+            <br>
+            <input v-model="name"/>
+            <br>
+            <label>list : </label>
+            <br> <input v-model="address"/>
+            <br>
+            <label>introduction : </label> 
+            <br>
+            <input type="number" v-model.number="age"/>
+            <br>
+            <label>img : </label> 
+            <br>
+            <input v-model.trim="introduce"/>
+            
+            
+    </div>
+    
+        <script>
+
+        const {createApp, ref, reactive} = Vue;
+
+        createApp({
+            setup(){
+                const isCharacterMode = ref(true);
+                const selected = ref("스킬등록");
+                const fruits = ref();
+
+                const toggleMode = () => {
+                    isCharacterMode.value = !isCharacterMode.value;
+                };
+                    const check = () =>{
+                    console.log(selected.value);
+                };
+
+                return{isCharacterMode, toggleMode};
+            }
+        
+        }).mount("#app");
+
+        
+
+        
+    </script>
+</body>
+</html>

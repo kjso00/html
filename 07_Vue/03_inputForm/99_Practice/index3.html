@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        header {
+            text-align: center;
+        }
+        .rootContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        article {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+            overflow: hidden;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            overflow: hidden;
+            border: 1px solid;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-container img {
+            flex: 1;
+            /* 이미지 간격을 조절 */
+            max-width: calc(30%);
+        }
+        .characterImg {
+            width: 100%;
+            height: 60%;
+        }
+        .inputContainer{
+            border: 1px solid;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+        }
+        .inputBox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <!-- 등록 폼 -->
+        <div class="inputContainer">
+            <select v-model="type">
+                <option value="charater">인물등록</option>
+                <option value="skill">스킬등록</option>
+            </select>
+            <div class="inputBox">
+                <label>name : </label>
+                <input v-model="characterInfo.name"  />
+
+                <label>introduction : </label>
+                <input v-model="characterInfo.introduction"/>
+                
+                <label>img : </label>
+                <input v-model="characterInfo.img" />
+            </div>
+            <button @click="pushHandler">등록</button>
+        </div>
+    </div>
+
+
+    <script>
+        const {createApp, ref, reactive} = Vue;
+
+        createApp({
+            setup(){
+                const type = ref("charater");
+                const charaters = ref([]);
+                
+                const characterInfo = reactive({
+                    id : 0,
+                    name : "",
+                    introduction : "",
+                    img:""
+                });
+
+                function pushHandler(){
+                    if(!characterInfo.name){
+                        return ;
+                    }
+                    if(!characterInfo.introduction){
+                        return;
+                    }
+                    if(!characterInfo.img){
+                        return;
+                    }
+                    characterInfo.id = charaters.value.length;
+                    
+                    charaters.value.push({...characterInfo});
+                }
+
+                return{
+                    type,
+                    characterInfo,
+                    charaters,
+                    pushHandler
+                }
+            }
+        }).mount("#app");
+
+    </script>
+</body>
+</html>
