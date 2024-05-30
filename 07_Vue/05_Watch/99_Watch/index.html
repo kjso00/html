@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+   
+    
+    <div id="app">
+
+        <input v-model= "number"/>
+        <img src="https://api.github.com/emojis">
+
+
+       
+
+
+    </div>
+
+
+    <script>
+        const { createApp, ref, reactive, watch, watchEffect } = Vue;
+
+        createApp({
+            setup() {
+                // input의 값을 입력기 위함
+                const number = ref('');
+                // 이미지를 보여주기 위함
+                const emoji = ref();
+                // image 목록을 받아오기 위함
+                let emojis = reactive({});
+
+                // 초기 데이터 목록을 받아오기 위함
+                // 이렇게 안해도 상관없으나 오늘 복습을 위함
+                watchEffect(async (number) => {
+                    emojis = await fetch("https://api.github.com/emojis")
+                        .then(response => response.json())
+                        .then(data => data);
+                })
+
+                return {
+                    number
+                }
+            }
+        }).mount("#app")
+
+
+        
+    </script>
+</body>
+
+</html>
