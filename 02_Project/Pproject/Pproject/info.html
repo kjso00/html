@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <header>
+        <h1>수지상회 강남1호점</h1>
+    </header>
+
+<!-- 1. 지도 노드 -->
+<div id="daumRoughmapContainer1717348132321" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+<!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+<footer>
+    <nav class="footer-nav">
+        <a href="main.html">홈</a>
+        <a href="#">즐겨찾기</a>
+        <a href="#">공유</a>
+        <a href="Login.html">로그아웃</a>
+        
+       
+    </nav>
+</footer>
+
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+	new daum.roughmap.Lander({
+		"timestamp" : "1717348132321",
+		"key" : "2jitn",
+		"mapWidth" : "640",
+		"mapHeight" : "360"
+	}).render();
+</script>
+</body>
+</html>
