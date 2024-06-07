@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <h1>회원가입</h1>
+    </header>
+    <main>
+        <section id="signup">
+            <form id="signupForm">
+                <div class="input-group">
+                    <label for="newUsername">사용자 이름</label>
+                    <input type="text" id="newUsername" name="newUsername" required>
+                </div>
+                <div class="input-group">
+                    <label for="newUsername">사용자 전화번호</label>
+                    <input type="text" id="newUserPhone" name="newUserPhone" required>
+                </div>
+                <div class="input-group">
+                    <label for="newUsername">사용자 아이디</label>
+                    <input type="text" id="newId" name="newId" required>
+                </div>
+                <div class="input-group">
+                    <label for="newPassword">비밀번호</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <button type="submit">회원가입</button>
+                <div id="message"></div>
+                <p id="loginLink">이미 회원이신가요? <a href="Login.html">로그인</a></p>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
